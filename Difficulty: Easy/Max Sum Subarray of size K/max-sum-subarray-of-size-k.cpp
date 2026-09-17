@@ -1,0 +1,31 @@
+class Solution {
+  public:
+    int maxSubarraySum(vector<int>& arr, int k) {
+        
+       int low = 0;
+        int high = k-1;
+         int sum = 0;
+        int n = arr.size();
+        
+        for (int i=low; i<=high ; i++) {
+        
+             sum = sum + arr[i];
+        }
+        int result = sum ;
+        
+        while(high<n) {
+            result = max(result,sum);
+            low++;
+            high++;
+            
+            if(high == n)
+            break;
+            
+            sum = sum - arr[low-1];
+            sum = sum + arr[high];
+            }
+            return result;
+        }
+        
+    
+};
